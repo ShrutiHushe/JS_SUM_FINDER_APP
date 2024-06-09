@@ -1,0 +1,80 @@
+
+<html>
+<head>
+<title>Sum Finder App by Shruti</title>
+<style>
+	* { font-size: 50px; }
+	body { background-color: #FFE4E1; }
+	.btn { border-radius: 30px; margin-left: 30px; }
+	.btn:hover { color: red; }
+</style>
+</head>
+<body>
+<center>
+	<h1>Sum Finder App</h1>
+	<form onsubmit="return find()">
+		<input type="number" placeholder="Enter integer" id="num" />
+		<br/><br/>
+		<input type="submit" value="M1" class="btn" />
+		<input type="submit" value="M2" class="btn" />
+		<input type="submit" value="M3" class="btn" />
+	</form>
+	<h2 id="msg"></h2>
+
+	<script>
+	function find() {
+		event.preventDefault();
+		let num = document.getElementById("num");
+		let msg = document.getElementById("msg");
+
+		if (num.value === "") {
+			alert("You did not enter an integer");
+			msg.innerHTML = "";
+			num.focus();
+			return false;
+		}
+
+		let ele = document.activeElement.value;
+		let ans = "";
+		let n = parseInt(num.value);
+
+		if (n < 1) {
+			alert("Number should be at least 1");
+			msg.innerHTML = "";
+			num.focus();
+			return false;
+		}
+
+		if (ele === "M1") {
+			let sum = 0;
+			let i = 1;
+			while(i<=n)
+			{
+				sum += i;
+				i += 1;
+			}
+			ans = "sum = " + sum;
+			msg.innerHTML = "M1 --> " + ans;
+		} else if (ele === "M2") {
+			let sum = 0;
+			let i = 1;
+			do {
+				sum += i;
+				i++;
+			} while (i <= n);
+			ans = "sum = " + sum;
+			msg.innerHTML = "M2 --> " + ans;
+		} else if (ele === "M3") {
+			let sum = 0;
+			for (let i = 1; i <= n; i++) {
+				sum += i;
+			}
+			ans = "sum = " + sum;
+			msg.innerHTML = "M3 --> " + ans;
+		}
+		return false;
+	}
+	</script>
+</center>
+</body>
+</html>
